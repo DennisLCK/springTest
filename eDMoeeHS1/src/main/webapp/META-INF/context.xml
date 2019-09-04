@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context displayName="eDM Web Application" docBase="eDMoeeHS"
+	path="/eDMoeeHS" reloadable="true">
+
+	<Resource name="jdbc/BookDataSQLver" type="javax.sql.DataSource"
+	username="sa" password="sa123456"
+	driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+	url="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=JSPDB"
+	maxTotal="8"
+	maxIdle="4"
+	maxWaitMillis="5000"/>
+
+</Context>
