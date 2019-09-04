@@ -20,6 +20,7 @@
  </h1> 
  <h2>
  管理後臺介面
+ type something new
  </h2>
  <HR>
    ${logoutMessage}${MsgOK.InsertOK}<BR>
