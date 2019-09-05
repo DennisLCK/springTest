@@ -1,7 +1,6 @@
 package _01_register.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,20 +13,20 @@ import _01_register.model.MemberBean;
 import _01_register.service.MemberService;
 import _01_register.service.impl.MemberServiceImpl;
 
-@WebServlet("/_01_register/queryMember.do")
-public class QueryAllMemberServlet extends HttpServlet {
+
+@WebServlet("/_01_register/findMember.do")
+public class FindMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String key = request.getParameter("key");//注意大小寫
+		int pkey = Integer.parseInt(key);
 		MemberService ms = new MemberServiceImpl();
-		List <MemberBean>list = ms.getAllMembers();
-		
-		//Collection<MemberBean> coll = ms.getAllMembers();
-		//用List不用Collection,因為List是子代,功能比較多
-		request.setAttribute("allMembers", list);
-		RequestDispatcher rd = request.getRequestDispatcher("showMembers.jsp");
+		MemberBean mb = ms.getMember(pkey);
+		request.setAttribute("mb", mb);
+		RequestDispatcher rd = request.getRequestDispatcher("updateMember.jsp");
 		rd.forward(request, response);
-		return;		
+		return;
 	}
-
 }

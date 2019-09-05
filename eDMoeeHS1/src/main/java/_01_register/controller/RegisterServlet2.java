@@ -143,7 +143,7 @@ public class RegisterServlet2 extends HttpServlet {
 		// 如果有錯誤
 		if (!errorMsg.isEmpty()) {
 			// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-			RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("register2.jsp");
 			rd.forward(request, response);
 			return;
 		}
@@ -173,7 +173,7 @@ public class RegisterServlet2 extends HttpServlet {
 				int n = service.saveMember(mem);
 				if (n == 1) {
 					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-					response.sendRedirect("../index.jsp");
+					response.sendRedirect("../index_p1.jsp");
 					return;
 				} else {
 					errorMsg.put("errorIDDup", "新增此筆資料有誤(RegisterServlet)");
@@ -182,14 +182,14 @@ public class RegisterServlet2 extends HttpServlet {
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面
 			if (!errorMsg.isEmpty()) {
 				// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-				RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("register2.jsp");
 				rd.forward(request, response);
 				return;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			errorMsg.put("errorIDDup", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("register2.jsp");
 			rd.forward(request, response);
 		}
 	}

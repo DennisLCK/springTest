@@ -19,4 +19,10 @@ public interface MemberService {
 	void updateUnpaidOrderAmount(OrderBean ob);
 	
 	List<MemberBean> getAllMembers();
+	
+	MemberBean getMember(int pkey);
+	
+	int deleteMember(int pkey);
+
+	int updateMember(MemberBean mb);
 }

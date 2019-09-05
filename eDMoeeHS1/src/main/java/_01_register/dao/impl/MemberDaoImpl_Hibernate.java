@@ -178,4 +178,90 @@ public class MemberDaoImpl_Hibernate implements MemberDao {
 		return list;
 	}
 
+	@Override
+	public MemberBean getMember(int pkey) {
+		MemberBean mb = null;
+		try {
+			InitialContext context = new InitialContext();
+			DataSource ds = (DataSource) context.lookup(resource);
+			
+			String sql = "SELECT * FROM Member where seqNO = ?";
+			try (
+				Connection con = ds.getConnection(); 
+				PreparedStatement pstmt = con.prepareStatement(sql);
+					
+			) {
+				pstmt.setInt(1, pkey);
+				try (ResultSet rs = pstmt.executeQuery();) 
+				{	if (rs.next()) {
+					mb = new MemberBean(
+							rs.getInt(1),
+							rs.getString(2), 
+							rs.getString(3), 
+							rs.getString(4), 
+							rs.getString(5)
+					);
+				}
+					
+				}
+				
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		
+		return mb;
+	}
+
+	@Override
+	public int deleteMember(int pk) {
+		int count = 0;
+		try {
+			InitialContext context = new InitialContext();
+			DataSource ds = (DataSource) context.lookup(resource);
+			
+			String sql = "DELETE FROM Member WHERE seqNo = ?";
+			try (
+				Connection con = ds.getConnection(); 
+				PreparedStatement pstmt = con.prepareStatement(sql);
+			) {
+				pstmt.setInt(1, pk);
+				count = pstmt.executeUpdate(); 
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return count;
+	}
+
+	@Override
+	public int updateMember(MemberBean mb) {
+		int count = 0;
+		try {
+			InitialContext context = new InitialContext();
+			DataSource ds = (DataSource) context.lookup(resource);
+			
+			String sql = "UPDATE Member SET  name=?,address=? WHERE seqNo = ?";
+			try (
+				Connection con = ds.getConnection(); 
+				PreparedStatement pstmt = con.prepareStatement(sql);
+			) {
+				pstmt.setString(1, mb.getName());
+				pstmt.setString(2, mb.getAddress());
+				pstmt.setInt(3, mb.getPkey());
+				count = pstmt.executeUpdate(); 
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return count;
+	}
+
 }

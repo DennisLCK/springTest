@@ -21,5 +21,12 @@ public interface MemberDao {
 	void updateUnpaidOrderAmount(OrderBean ob);
 	
 	List<MemberBean> getAllMembers();
+	
+	MemberBean getMember(int pKey);
+	
+
+	int deleteMember(int pk);
+
+	int updateMember(MemberBean mb);
 
 }

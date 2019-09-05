@@ -120,6 +120,24 @@ public class MemberServiceImpl implements MemberService {
 		return dao.getAllMembers();
 	}
 
+	@Override
+	public MemberBean getMember(int pkey) {
+		MemberDao dao = new MemberDaoImpl_Hibernate();
+		return dao.getMember(pkey);
+	}
+
+	@Override
+	public int deleteMember(int pkey) {
+		MemberDao dao = new MemberDaoImpl_Hibernate();
+		return dao.deleteMember(pkey);
+	}
+
+	@Override
+	public int updateMember(MemberBean mb) {
+		MemberDao dao = new MemberDaoImpl_Hibernate();
+		return dao.updateMember(mb);
+	}
+
 	
 }
 

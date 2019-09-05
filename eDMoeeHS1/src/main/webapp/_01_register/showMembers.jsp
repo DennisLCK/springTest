@@ -25,7 +25,7 @@
 		
 			<c:if test ='${vs.first }'>
 				<c:out value="<div class='jumbotron' ><table border='1' style='margin:auto'>" escapeXml='false'/>
-				<c:out value="<tr><td>帳號</td><td>員工名稱</td><td>address</td><td>email</td><td>電話</td></tr>" escapeXml='false'/>
+				<c:out value="<tr><td>帳號</td><td>員工名稱</td><td>address</td><td>email</td><td>電話</td><td></td></tr>" escapeXml='false'/>
 				
 			</c:if>
 			
@@ -35,6 +35,8 @@
 				<td>${member.address}</td>
 				<td>${member.email}</td>
 				<td>${member.tel}</td>
+				
+				<td><a href='findMember.do?key=${member.pkey}'>更改員工資料</a></td>
 			</tr>
 			<c:if test ='${vs.last }'>
 				<c:out value="</table></div>" escapeXml='false'/>

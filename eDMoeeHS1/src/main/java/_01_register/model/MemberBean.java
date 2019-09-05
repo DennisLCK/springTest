@@ -19,7 +19,7 @@ public class MemberBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "seqNo")
-	private Integer pKey;
+	private Integer pkey;
 	private String memberId;
 	private String name;
 	private String password;
@@ -37,7 +37,7 @@ public class MemberBean implements Serializable {
 	public MemberBean(Integer pKey, String memberId, String name, String password, String address, String email,
 			String tel, String userType, Timestamp registerTime, Double totalAmt, Double unpaid_amount,
 			Blob memberImage, String fileName) {
-		this.pKey = pKey;
+		this.pkey = pKey;
 		this.memberId = memberId;
 		this.password = password;
 		this.name = name;
@@ -53,25 +53,42 @@ public class MemberBean implements Serializable {
 	}
 	public MemberBean(Integer pKey, String memberId, String name, String address, String email,
 			String tel) {
-		this.pKey = pKey;
+		this.pkey = pKey;
 		this.memberId = memberId;
 		
 		this.name = name;
 		this.address = address;
 		this.email = email;
-		this.tel = tel;
+		this.tel = tel;	
+	}
+	public MemberBean(Integer pKey, String memberId, String name, String password, String address
+			) {
+		this.pkey = pKey;
+		this.memberId = memberId;
+		this.password = password;
+		this.name = name;
+		this.address = address;
 		
+	}
+	public MemberBean(Integer pKey, String memberId, String name, String address
+			) {
+		this.pkey = pKey;
+		this.memberId = memberId;
+		
+		this.name = name;
+		this.address = address;
 		
 	}
 	public MemberBean() {
 	}
 
-	public Integer getPKey() {
-		return pKey;
+	public Integer getPkey() {
+		
+		return pkey;
 	}
 
-	public void setPKey(int pKey) {
-		this.pKey = pKey;
+	public void setPkey(Integer pkey) {
+		this.pkey = pkey;
 	}
 
 	public Blob getMemberImage() {
@@ -111,6 +128,7 @@ public class MemberBean implements Serializable {
 	}
 
 	public String getAddress() {
+		
 		return address;
 	}
 
